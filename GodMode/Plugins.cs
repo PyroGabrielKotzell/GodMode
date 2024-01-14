@@ -18,5 +18,7 @@ namespace GodMode
             harmony.PatchAll(typeof(Patcher));
             mls.LogInfo("GodMode is loaded");
         }
+        void Update() { 
+        }
     }
 }
