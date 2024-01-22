@@ -10,6 +10,7 @@ namespace GodMode
         private readonly Harmony harmony = new Harmony("fenicemaster.GodMode");
         public static GodMode instance;
         internal ManualLogSource mls;
+
         void Awake()
         {
             if (instance == null) instance = this;
@@ -18,7 +19,10 @@ namespace GodMode
             harmony.PatchAll(typeof(Patcher));
             mls.LogInfo("GodMode is loaded");
         }
-        void Update() { 
+
+        void Update() {
         }
+
+        public ManualLogSource GetManualLogSource() { return mls; }
     }
 }
