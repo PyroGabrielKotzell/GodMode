@@ -20,9 +20,6 @@ namespace GodMode
             mls.LogInfo("GodMode is loaded");
         }
 
-        void Update() {
-        }
-
         public ManualLogSource GetManualLogSource() { return mls; }
     }
 }
