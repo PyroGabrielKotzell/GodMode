@@ -1,6 +1,5 @@
 ﻿using GameNetcodeStuff;
 using HarmonyLib;
-using System.Runtime.CompilerServices;
 
 namespace GodMode
 {
@@ -8,7 +7,10 @@ namespace GodMode
     {
         [HarmonyPatch(typeof(PlayerControllerB), "AllowPlayerDeath")]
         [HarmonyPrefix]
-        private static bool NoDie() => false;
+        private static void NoDie(ref bool __result)
+        {
+            if (GodMode.immortality.Value) __result = false;
+        }
 
         [HarmonyPatch(typeof(PlayerControllerB), "Update")]
         [HarmonyPostfix]

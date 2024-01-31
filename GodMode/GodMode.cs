@@ -17,14 +17,19 @@ namespace GodMode
 
         void Awake()
         {
-            GodMode.immortality = base.Config.Bind<bool>("GodMode", "Disable death", true, "Disable player death.");
-            GodMode.health_patch = base.Config.Bind<bool>("GodMode", "Modify health", true, "Every update the health is set to the specified amount.");
-            GodMode.health_number = base.Config.Bind<int>("GodMode", "Health amount", 1000, "The amount of health to have");
+            configs();
             if (instance == null) instance = this;
             mls = BepInEx.Logging.Logger.CreateLogSource("fenicemaster.GodMode");
             harmony.PatchAll(typeof(GodMode));
             harmony.PatchAll(typeof(Patcher));
             mls.LogInfo("GodMode is loaded");
+        }
+
+        void configs()
+        {
+            GodMode.immortality = base.Config.Bind<bool>("GodMode", "Disable death", true, "Disable player death.");
+            GodMode.health_patch = base.Config.Bind<bool>("GodMode", "Modify health", true, "Every update the health is set to the specified amount.");
+            GodMode.health_number = base.Config.Bind<int>("GodMode", "Health amount", 1000, "The amount of health to have");
         }
 
         public ManualLogSource GetManualLogSource() { return mls; }
