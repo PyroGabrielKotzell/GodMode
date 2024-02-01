@@ -13,7 +13,7 @@ namespace GodMode
         internal ManualLogSource mls;
         public static ConfigEntry<bool> immortality;
         public static ConfigEntry<bool> health_patch;
-        public static ConfigEntry<int> health_number;
+        public static ConfigEntry<uint> health_number;
 
         void Awake()
         {
@@ -27,9 +27,9 @@ namespace GodMode
 
         void configs()
         {
-            GodMode.immortality = base.Config.Bind<bool>("GodMode", "Disable death", true, "Disable player death.");
-            GodMode.health_patch = base.Config.Bind<bool>("GodMode", "Modify health", true, "Every update the health is set to the specified amount.");
-            GodMode.health_number = base.Config.Bind<int>("GodMode", "Health amount", 1000, "The amount of health to have");
+            immortality = base.Config.Bind<bool>("Client-side", "Disable death", true, "Disable player death.");
+            health_patch = base.Config.Bind<bool>("Client-side", "Modify health", true, "Every update the health is set to the specified amount.");
+            health_number = base.Config.Bind<uint>("Client-side", "Health amount", 1000, "The amount of health to have");
         }
 
         public ManualLogSource GetManualLogSource() { return mls; }
