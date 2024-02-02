@@ -4,7 +4,7 @@ using HarmonyLib;
 
 namespace GodMode
 {
-    internal class Patcher
+    internal class PlayerPatch
     {
         private static bool nodie, health;
         private static uint healthN;
@@ -34,34 +34,5 @@ namespace GodMode
         {
             if (health) ___health = (int)healthN;
         }
-
-        /*
-         [HarmonyPatch(typeof(MaskedPlayerEnemy), "OnCollideWithPlayer")]
-		[HarmonyPrefix]
-		public static bool MaskedKillAnimationPatch()
-		{
-			return SyncedInstance<Config>.Instance.MaskedDup;
-		}
-
-		[HarmonyPatch(typeof(FlowermanAI), "OnCollideWithPlayer")]
-		[HarmonyPrefix]
-		public static bool BrackenKillAnimationPatch()
-		{
-			return SyncedInstance<Config>.Instance.BrackenKill;
-		}
-
-		[HarmonyPatch(typeof(CentipedeAI), "OnCollideWithPlayer")]
-		[HarmonyPrefix]
-		public static bool FleaKillAnimationPatch()
-		{
-			return SyncedInstance<Config>.Instance.FleaCling;
-		}
-
-		[HarmonyPatch(typeof(ForestGiantAI), "OnCollideWithPlayer")]
-		[HarmonyPrefix]
-		public static bool GiantKillAnimationPatch()
-		{
-			return SyncedInstance<Config>.Instance.GiantKill;
-		}*/
     }
 }
