@@ -13,7 +13,7 @@ namespace GodMode
         internal ManualLogSource mls;
         public static ConfigEntry<bool> immortality;
         public static ConfigEntry<bool> health_patch;
-        public static ConfigEntry<uint> health_number;
+        public static ConfigEntry<int> health_number;
 
         public static ConfigEntry<bool> brackenSnap;
         public static ConfigEntry<bool> fleaWrap;
@@ -35,7 +35,7 @@ namespace GodMode
             // players' mortality
             immortality = base.Config.Bind<bool>("Player", "Disable death", true, "Disable player death.");
             health_patch = base.Config.Bind<bool>("Player", "Modify health", true, "Every update the health is set to the specified amount.");
-            health_number = base.Config.Bind<uint>("Player", "Health amount", 1000, "The amount of health to have");
+            health_number = base.Config.Bind<int>("Player", "Health amount", 1000, "The amount of health to have");
 
             // monsters' colliders
             brackenSnap = base.Config.Bind<bool>("Monsters", "Bracken snap", true, "Disable bracken snapping your neck.");

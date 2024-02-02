@@ -7,7 +7,7 @@ namespace GodMode
     internal class PlayerPatch
     {
         private static bool nodie, health;
-        private static uint healthN;
+        private static int healthN;
 
         void Awake()
         {
@@ -32,7 +32,7 @@ namespace GodMode
         [HarmonyPostfix]
         private static void update(ref int ___health)
         {
-            if (health) ___health = (int)healthN;
+            if (health) ___health = healthN;
         }
     }
 }
