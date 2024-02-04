@@ -6,21 +6,11 @@ namespace GodMode
 {
     internal class PlayerPatch
     {
-        private static bool nodie, health;
-        private static int healthN;
-
-        void Awake()
-        {
-            nodie = GodMode.immortality.Value;
-            health = GodMode.health_patch.Value;
-            healthN = GodMode.health_number.Value;
-        }
-
         [HarmonyPatch(typeof(PlayerControllerB), "AllowPlayerDeath")]
         [HarmonyPrefix]
         private static bool NoDie(ref bool __result)
         {
-            if (nodie)
+            if (GodMode.immortality.Value)
             {
                 __result = false;
                 return false;
@@ -30,9 +20,34 @@ namespace GodMode
 
         [HarmonyPatch(typeof(PlayerControllerB), "Update")]
         [HarmonyPostfix]
-        private static void update(ref int ___health)
+        private static void update(ref int ___health, ref float ___sprintMeter)
         {
-            if (health) ___health = healthN;
+            if (GodMode.setHealth.Value) ___health = GodMode.healthNum.Value;
+            if (GodMode.infStamina.Value) ___sprintMeter = 1f;
         }
+
+        /*
+        [HarmonyPatch(typeof(PlayerControllerB), "BeginGrabObject")]
+        [HarmonyPostfix]
+        static void UpdateBeginGrabObject(ref bool ___twoHanded)
+        {
+            ___twoHanded = false;
+        }
+
+        [HarmonyPatch(typeof(PlayerControllerB), "GrabObjectClientRpc")]
+        [HarmonyPostfix]
+        static void UpdateGrabObjectClientRpc(ref bool ___twoHanded)
+        {
+            ___twoHanded = false;
+        }
+
+        [HarmonyPatch(typeof(PlayerControllerB), "SwitchToItemSlot")]
+        [HarmonyPostfix]
+        static void UpdateSwitchToItemSlot(ref bool ___twoHanded)
+        {
+            ___twoHanded = false;
+        }
+
+         */
     }
 }
