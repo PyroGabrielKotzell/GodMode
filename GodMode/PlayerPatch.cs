@@ -27,6 +27,10 @@ namespace GodMode
         }
 
         /*
+        InputAction inputAction = new InputAction(null, 0, "<Keyboard>/" + Plugin.cfgKeyBind.Value, null, null, null);
+		inputAction.performed += this.OnInsertKeyPressed;
+		inputAction.Enable();
+
         [HarmonyPatch(typeof(PlayerControllerB), "BeginGrabObject")]
         [HarmonyPostfix]
         static void UpdateBeginGrabObject(ref bool ___twoHanded)
